@@ -20,6 +20,10 @@ Vagrant.configure("2") do |config|
   config.winrm.password = "vagrant"
   config.vm.synced_folder ".", "/vagrant", type: "smb", smb_username: "VagrantSMB", smb_password: "P@ssW0rD!" 
 
+  config.vm.provider "hyperv" do |h|
+    h.enable_virtualization_extensions = true
+    h.linked_clone = true
+  end
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
