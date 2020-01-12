@@ -23,6 +23,9 @@ Vagrant.configure("2") do |config|
   config.vm.provider "hyperv" do |h|
     h.enable_virtualization_extensions = true
     h.linked_clone = true
+    h.vm_integration_services = {
+      guest_service_interface: true #<---------- this line enables Copy-VMFile
+    }
   end
 
   # Disable automatic box update checking. If you disable this, then
